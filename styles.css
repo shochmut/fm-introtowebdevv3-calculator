@@ -16,6 +16,8 @@ body {
   background-color: slategray;
   flex-direction: column;
   align-items: center;
+  width: 400px;
+  height: 450px;
 }
 
 .calculator {
@@ -35,10 +37,44 @@ body {
   grid-area: display;
   display: flex;
   justify-content: right;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 100%;
+}
+
+button {
+  height: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 4px double #cccccc;
+    font-size: 28px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s; /* add this line, chrome, safari, etc */
+    -moz-transition: all 0.5s; /* add this line, firefox */
+    -o-transition: all 0.5s; /* add this line, opera */
+    transition: all 0.5s; /* add this line */
+}
+
+button:hover {
+  background-color: darkgray;
+}
+
+.button:active {
+  background-color: darkslategrey;
+}
+
+.orange {
+  background-color: coral
+}
+
+.orange:hover {
+  background-color: #dfb07e;
 }
 
 .row {
-  width: 20vh
+  width: 20vh;
+  display: flex;
 }
 
 .reset {
@@ -86,4 +122,12 @@ body {
 
 .three {
   grid-area: three;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.equals {
+  grid-area: equals;
 }
