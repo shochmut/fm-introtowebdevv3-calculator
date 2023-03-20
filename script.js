@@ -1,6 +1,7 @@
 // initialize calculator value
-storedNum = '0';
-workingNum = '0';
+let storedNum = '0';
+let workingNum = 0;
+let previousOp = null;
 
 // initialize event handling
 const buttons = document.querySelector('.calculator')
@@ -22,25 +23,27 @@ const handleSymbol = (symbol) => {
   switch (symbol) {
     case 'reset':
       storedNum = '0'
-    break;
+      workingNum = 0
+      previousOp = null
+      break;
     case 'backspace':
       storedNum = storedNum.slice(0,-1)
-    break;
-    case 'divide':
-      divide(storedNum)
-    break;
-    case 'multiply':
-    f
-    break;
-    case 'subtract':
-
-    break;
+      break;
     case 'add':
-
-    break;
+    case 'subtract':
+    case 'multiply':
+    case 'divide':
+      calculate(symbol)
+      break;
     case 'equals':
-
-    break;
+      if (previousOp === null) {
+        return;
+      }
+      domath(Number(storedNum))
+      previousOp = null
+      storedNum = "" + workingNum
+      workingNum = 0
+      break;
   }
 }
 
@@ -58,9 +61,33 @@ const reRenderDisplay = () => {
 }
 
 //mathematical operation functions
-const divide = (firstNum) => {
+const calculate = (symbol) => {
+  if (storedNum ===0) {
+    return;
+  }
 
+  const intStoredNum = Number(storedNum)
+  if (workingNum === 0) {
+    workingNum = intStoredNum
+  }
+  else {
+    domath(intStoredNum)
+  }
 
+  previousOp = symbol
+  storedNum = '0'
+}
+
+const domath = (intStoredNum) => {
+  if (previousOp === 'add') {
+    workingNum += intStoredNum
+  } else if (previousOp === 'multiply') {
+    workingNum *= intStoredNum
+  } else if (previousOp === 'divide') {
+    workingNum /= intStoredNum
+  } else if (previousOp === 'subtract') {
+    workingNum -= intStoredNum
+  }
 }
 
 
