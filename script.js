@@ -1,5 +1,6 @@
 // initialize calculator value
 storedNum = '0';
+workingNum = '0';
 
 // initialize event handling
 const buttons = document.querySelector('.calculator')
@@ -29,7 +30,7 @@ const handleSymbol = (symbol) => {
       divide(storedNum)
     break;
     case 'multiply':
-    
+    f
     break;
     case 'subtract':
 
@@ -58,7 +59,7 @@ const reRenderDisplay = () => {
 
 //mathematical operation functions
 const divide = (firstNum) => {
-  
+
 
 }
 
